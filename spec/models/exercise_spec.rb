@@ -7,18 +7,8 @@ RSpec.describe Exercise, type: :model do
     password_digest: "lajsdljaskdjlasjkdj"
   )
   p user
-  subject {
-    described_class.new(
-      movement_id: 1,  
-      weight_category_id: 1,
-      split_id: 1, 
-      reps: 8, 
-      weight: 30,
-      trainee_id: 1
-    )
-  }
 
-  exercise = Exercise.create(
+  subject = Exercise.create(
     movement_id: 2,
     weight_category_id: 2, 
     split_id: 2,
@@ -26,7 +16,7 @@ RSpec.describe Exercise, type: :model do
     weight: 30,
     trainee_id: user.id
   )
-  p exercise
+  p subject
 
   describe "Validations" do
     it "is valid with valid attributes" do
@@ -61,5 +51,8 @@ RSpec.describe Exercise, type: :model do
 
   describe "Associations" do
     it {should belong_to(:trainee)}
+    # it {should belong_to(:routine)}
+    it {should have_many(:targets)}
+    it {should have_many(:targets).through(:exercise_targets)}
   end
 end

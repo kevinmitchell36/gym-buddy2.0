@@ -8,6 +8,10 @@ RSpec.describe User, type: :model do
       password_digest: "lajsdljaskdjlasjkdj"
     )
   }
+
+  coaching = Coaching.create!(trainer_id: 1, trainee_id: 2)
+  p coaching
+  
   
   it "is valid with valid attributes" do    
     expect(subject).to be_valid
@@ -26,5 +30,12 @@ RSpec.describe User, type: :model do
   it "is not valid without a password" do
     subject.password_digest = nil
     expect(subject).to_not be_valid
+  end
+
+  describe "Associations" do
+    it {should have_many(:training_teachers)}
+    it {should have_many(:trainers).through(:training_teachers)}
+    it {should have_many(:training_students)}
+    it {should have_many(:trainees).through(:training_students)}
   end
 end

@@ -1,6 +1,6 @@
 class Coaching < ApplicationRecord
 
-  # validates :trainer_id, :trainee_id, presence: true
+  validates :trainer_id, :trainee_id, presence: true
 
   belongs_to :trainer, foreign_key: :trainer_id, class_name: "User"
 
