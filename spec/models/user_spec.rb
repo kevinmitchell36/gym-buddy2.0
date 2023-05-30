@@ -1,41 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject {
-    described_class.new(
-      name: "Kevin",
-      email: "kevin@example.com",
-      password_digest: "lajsdljaskdjlasjkdj"
-    )
-  }
-
-  coaching = Coaching.create!(trainer_id: 1, trainee_id: 2)
-  p coaching
   
-  
-  it "is valid with valid attributes" do    
-    expect(subject).to be_valid
+  describe "#user" do
+    it "returns a new user instance (non-persistent)" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
   end
 
-  it "is not valid without a name" do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
-  
-  it "is not valid without an email" do
-    subject.email = nil
-    expect(subject).to_not be_valid
-  end
-  
-  it "is not valid without a password" do
-    subject.password_digest = nil
-    expect(subject).to_not be_valid
-  end
-
-  describe "Associations" do
+  describe "#associations" do
     it {should have_many(:training_teachers)}
     it {should have_many(:trainers).through(:training_teachers)}
     it {should have_many(:training_students)}
     it {should have_many(:trainees).through(:training_students)}
   end
+  
+  describe "#validations" do
+    
+    it "is not valid without a name" do
+      user = build(:user)
+      user.first_name = nil
+      expect(user).to_not be_valid
+    end
+    
+    it "is not valid without an email" do
+      user = build(:user)
+      user.email = nil
+      expect(user).to_not be_valid
+    end
+
+    # Add uniqueness check here
+    
+    it "is not valid without a password" do
+      user = build(:user)
+      user.password_digest = nil
+      expect(user).to_not be_valid
+    end
+  end
+
 end

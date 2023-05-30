@@ -1,0 +1,2 @@
+class WeightCategory < ApplicationRecord
+end
