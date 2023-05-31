@@ -5,7 +5,9 @@ FactoryBot.define do
   factory :user do
     first_name { fnames.sample }
     last_name { lnames.sample}
-    email { "#{first_name}@example.com" }
+    sequence :email do |n| 
+      "#{first_name}#{n}@example.com" 
+    end
     password_digest { "randstring123" }
   end
 end

@@ -6,6 +6,7 @@ class Exercise < ApplicationRecord
   belongs_to :split
   belongs_to :routine
   
+  
  
   has_many :exercise_targets
   has_many :targets, through: :exercise_targets

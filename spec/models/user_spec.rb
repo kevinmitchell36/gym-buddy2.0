@@ -10,6 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "#associations" do
+    it {should have_many(:exercises)}
     it {should have_many(:training_teachers)}
     it {should have_many(:trainers).through(:training_teachers)}
     it {should have_many(:training_students)}

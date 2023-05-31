@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :exercises, foreign_key: :trainee_id
   has_many :coachings
   validates_associated :coachings
 
