@@ -4,6 +4,6 @@ RSpec.describe Routine, type: :model do
   
   describe " #associations" do
     it { should have_many(:exercises) }
-    it { should belong_to(:trainee) }
+    it { should belong_to(:user) }
   end
 end
