@@ -8,7 +8,7 @@ RSpec.describe Exercise, type: :model do
   movement = Movement.create(name: "pec fly")
   weight_category = WeightCategory.create(name: "Machine Weight")
   split = Split.create(name: "Upper")
-  routine = Routine.create(trainee_id: user_1.id)
+  # routine = Routine.create(trainee_id: user_1.id)
 
 
   describe " #exercise validations" do
@@ -21,8 +21,7 @@ RSpec.describe Exercise, type: :model do
         weight: 15,
         notes: "Bring elbows together",
         trainee_id: user_1.id,
-        trainer_id: user_2.id,
-        routine_id: routine.id
+        trainer_id: user_2.id
       )
       expect(exercise).to be_valid
     end
