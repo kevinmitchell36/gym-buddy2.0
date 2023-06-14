@@ -22,5 +22,5 @@ RSpec.describe ExerciseTarget, type: :model do
     it { should belong_to(:target)}
     it { should belong_to(:exercise)}
   end
-
+  puts "making so changes for testing purposes"
 end
