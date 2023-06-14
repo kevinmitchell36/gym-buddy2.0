@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   
-  describe "#user" do
+  describe "User" do
     it "returns a new user instance (non-persistent)" do
       user = build(:user)
       expect(user).to be_valid
     end
   end
 
-  describe "#associations" do
+  describe "Associations" do
     it {should have_many(:exercises)}
     it {should have_many(:training_teachers)}
     it {should have_many(:trainers).through(:training_teachers)}
@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
     it {should have_many(:trainees).through(:training_students)}
   end
   
-  describe "#validations" do
+  describe "Validations" do
     
     it "is not valid without a name" do
       user = build(:user)
